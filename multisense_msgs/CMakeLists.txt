@@ -20,6 +20,7 @@ find_package(ament_cmake REQUIRED)
 
 # Message generation
 find_package(builtin_interfaces REQUIRED)
+find_package(sensor_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 set(msg_files
@@ -30,13 +31,14 @@ set(msg_files
     "msg/RawCamCal.msg"
     "msg/RawCamData.msg"
     "msg/RawLidarCal.msg"
+    "msg/RawPointCloud2.msg"
     "msg/Histogram.msg"
     "msg/DeviceStatus.msg"
     "msg/StampedPps.msg")
 
 rosidl_generate_interfaces(${PROJECT_NAME}
                            ${msg_files}
-                           DEPENDENCIES builtin_interfaces)
+                           DEPENDENCIES builtin_interfaces sensor_msgs)
 
 ament_export_dependencies(rosidl_default_runtime)
 
